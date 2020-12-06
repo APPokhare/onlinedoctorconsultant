@@ -11,7 +11,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.onlinedoctorconsultant.entities.BaseEntity;
-import com.onlinedoctorconsultant.entities.userinfo.enums.AddressObjectType;
 import com.onlinedoctorconsultant.helpers.constants.IRestConstants;
 
 /**
@@ -57,8 +56,6 @@ public class Address extends BaseEntity {
 	@JoinColumn(name = "pincode_id")
 	private Pincode pincode;
 	
-	@Column(name = "object_type")
-	private AddressObjectType addressObjectType;
 	
 	@Column(name = "object_id") // ID will be based on respective table from AddressObjectType
 	private Long objectId;
@@ -191,20 +188,6 @@ public class Address extends BaseEntity {
 
 
 	/**
-	 * @return the addressObjectType
-	 */
-	public AddressObjectType getAddressObjectType() {
-		return addressObjectType;
-	}
-
-	/**
-	 * @param addressObjectType the addressObjectType to set
-	 */
-	public void setAddressObjectType(AddressObjectType addressObjectType) {
-		this.addressObjectType = addressObjectType;
-	}
-
-	/**
 	 * @return the objectId
 	 */
 	public Long getObjectId() {
@@ -245,7 +228,6 @@ public class Address extends BaseEntity {
 		result = prime * result + ((locality == null) ? 0 : locality.hashCode());
 		result = prime * result + ((longitude == null) ? 0 : longitude.hashCode());
 		result = prime * result + ((objectId == null) ? 0 : objectId.hashCode());
-		result = prime * result + ((addressObjectType == null) ? 0 : addressObjectType.hashCode());
 		result = prime * result + ((pincode == null) ? 0 : pincode.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
@@ -305,8 +287,6 @@ public class Address extends BaseEntity {
 				return false;
 		} else if (!objectId.equals(other.objectId))
 			return false;
-		if (addressObjectType != other.addressObjectType)
-			return false;
 		if (pincode == null) {
 			if (other.pincode != null)
 				return false;
@@ -318,6 +298,14 @@ public class Address extends BaseEntity {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", locality="
+				+ locality + ", landmark=" + landmark + ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", title=" + title + ", addressType=" + addressType + ", pincode=" + pincode + ", addressObjectType="
+				+ objectId + "]";
 	}
 
 	

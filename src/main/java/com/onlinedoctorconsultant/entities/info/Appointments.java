@@ -39,6 +39,9 @@ public class Appointments extends BaseEntity {
 	
 	@Column(name = "is_approved")
 	private Boolean isApproved;
+	
+	@Column(name = "condition")
+	private String condition;
 
 	/**
 	 * @return the id
@@ -109,11 +112,28 @@ public class Appointments extends BaseEntity {
 	public void setIsApproved(Boolean isApproved) {
 		this.isApproved = isApproved;
 	}
+	
+	
+
+	/**
+	 * @return the condition
+	 */
+	public String getCondition() {
+		return condition;
+	}
+
+	/**
+	 * @param condition the condition to set
+	 */
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result + ((condition == null) ? 0 : condition.hashCode());
 		result = prime * result + ((dateAndTime == null) ? 0 : dateAndTime.hashCode());
 		result = prime * result + ((doctor == null) ? 0 : doctor.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -131,6 +151,11 @@ public class Appointments extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		Appointments other = (Appointments) obj;
+		if (condition == null) {
+			if (other.condition != null)
+				return false;
+		} else if (!condition.equals(other.condition))
+			return false;
 		if (dateAndTime == null) {
 			if (other.dateAndTime != null)
 				return false;
@@ -161,8 +186,7 @@ public class Appointments extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Appointments [id=" + id + ", doctor=" + doctor + ", patient=" + patient + ", date_and_time="
-				+ dateAndTime + ", isApproved=" + isApproved + "]";
-	}
-	
+		return "Appointments [id=" + id + ", doctor=" + doctor + ", patient=" + patient + ", dateAndTime=" + dateAndTime
+				+ ", isApproved=" + isApproved + ", condition=" + condition + "]";
+	}	
 }

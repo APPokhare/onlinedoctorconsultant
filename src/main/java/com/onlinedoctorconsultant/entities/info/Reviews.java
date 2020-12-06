@@ -28,10 +28,13 @@ public class Reviews extends BaseEntity {
 	
 	@OneToOne(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "doctor_id")
-	private Doctor doctor;
+	private User doctorId;
 	
-	@Column(name = "reviews")
-	private String reviews;
+	@Column(name = "stars")
+	private Long stars;
+	
+	@Column(name = "comment")
+	private String comment;
 
 	/**
 	 * @return the id
@@ -50,38 +53,54 @@ public class Reviews extends BaseEntity {
 	/**
 	 * @return the doctor
 	 */
-	public Doctor getDoctor() {
-		return doctor;
+	public User getDoctor() {
+		return doctorId;
 	}
 
 	/**
 	 * @param doctor the doctor to set
 	 */
-	public void setDoctor(Doctor doctor) {
-		this.doctor = doctor;
+	public void setDoctor(User doctor) {
+		this.doctorId = doctor;
+	}
+
+
+	/**
+	 * @return the stars
+	 */
+	public Long getStars() {
+		return stars;
 	}
 
 	/**
-	 * @return the reviews
+	 * @param stars the stars to set
 	 */
-	public String getReviews() {
-		return reviews;
+	public void setStars(Long stars) {
+		this.stars = stars;
 	}
 
 	/**
-	 * @param reviews the reviews to set
+	 * @return the comment
 	 */
-	public void setReviews(String reviews) {
-		this.reviews = reviews;
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * @param comment the comment to set
+	 */
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((doctor == null) ? 0 : doctor.hashCode());
+		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+		result = prime * result + ((doctorId == null) ? 0 : doctorId.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
+		result = prime * result + ((stars == null) ? 0 : stars.hashCode());
 		return result;
 	}
 
@@ -94,26 +113,32 @@ public class Reviews extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		Reviews other = (Reviews) obj;
-		if (doctor == null) {
-			if (other.doctor != null)
+		if (comment == null) {
+			if (other.comment != null)
 				return false;
-		} else if (!doctor.equals(other.doctor))
+		} else if (!comment.equals(other.comment))
+			return false;
+		if (doctorId == null) {
+			if (other.doctorId != null)
+				return false;
+		} else if (!doctorId.equals(other.doctorId))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (reviews == null) {
-			if (other.reviews != null)
+		if (stars == null) {
+			if (other.stars != null)
 				return false;
-		} else if (!reviews.equals(other.reviews))
+		} else if (!stars.equals(other.stars))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Reviews [id=" + id + ", doctor=" + doctor + ", reviews=" + reviews + "]";
+		return "Reviews [id=" + id + ", doctor=" + doctorId + ", stars=" + stars + ", comment="
+				+ comment + "]";
 	}
 }

@@ -85,6 +85,12 @@ public class AddressType extends BaseEntity{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "AddressType [id=" + id + ", addressType=" + addressType + "]";
+	}
+	
 	
 	
 }

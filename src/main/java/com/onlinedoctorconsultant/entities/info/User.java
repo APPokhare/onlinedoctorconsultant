@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.onlinedoctorconsultant.entities.BaseEntity;
-import com.onlinedoctorconsultant.entities.userinfo.enums.GenderType;
+import com.onlinedoctorconsultant.entities.info.enums.GenderType;
 import com.onlinedoctorconsultant.helpers.constants.IRestConstants;
 
 /**
@@ -61,9 +61,6 @@ public class User extends BaseEntity {
 	@JoinColumn(name = "image_id")
 	private Image image;
 
-	@Column(name = "service_id")
-	private String serviceId;
-	
 	/**
 	 * @return the id
 	 */
@@ -232,20 +229,6 @@ public class User extends BaseEntity {
 		this.image = image;
 	}
 
-	/**
-	 * @return the serviceId
-	 */
-	public String getServiceId() {
-		return serviceId;
-	}
-
-	/**
-	 * @param serviceId the serviceId to set
-	 */
-	public void setServiceId(String serviceId) {
-		this.serviceId = serviceId;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -261,7 +244,6 @@ public class User extends BaseEntity {
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((mobile == null) ? 0 : mobile.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((serviceId == null) ? 0 : serviceId.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -327,11 +309,6 @@ public class User extends BaseEntity {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (serviceId == null) {
-			if (other.serviceId != null)
-				return false;
-		} else if (!serviceId.equals(other.serviceId))
-			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -345,7 +322,7 @@ public class User extends BaseEntity {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", password=" + password
 				+ ", mobile=" + mobile + ", email=" + email + ", gender=" + gender + ", dob=" + dob + ", username="
 				+ username + ", isActive=" + isActive + ", lastAccessDate=" + lastAccessDate + ", image=" + image
-				+ ", serviceId=" + serviceId + "]";
+				+ "]";
 	}
 	
 }
