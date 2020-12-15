@@ -40,7 +40,7 @@ public class Appointments extends BaseEntity {
 	@Column(name = "is_approved")
 	private Boolean isApproved;
 	
-	@Column(name = "condition")
+	@Column(name = "med_condition")
 	private String condition;
 
 	/**

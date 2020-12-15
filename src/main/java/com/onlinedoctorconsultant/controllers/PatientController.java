@@ -20,7 +20,7 @@ import com.onlinedoctorconsultant.services.PatientService;
 /**
  * @author Amruta 5th Dec 2020
  *
- * @endpoint /api/Patient
+ * @endpoint /api/patient
  *
  */
 @RestController
